@@ -1,5 +1,4 @@
-# 🍽️ EatFit - AI-Powered Healthy Recipe Generator
-
+# 🍽️ EatFit
 EatFit is a smart recipe generation application that leverages a fine-tuned LLaMA-2 model to produce healthy, Indian-style recipes tailored to user prompts. It uses a user feedback loop to adapt recipe diversity and tone over time.
 
 ---
@@ -13,11 +12,43 @@ EatFit is a smart recipe generation application that leverages a fine-tuned LLaM
 - Designed for fast and memory-efficient inference
 
 ---
+## 📊 Dataset
+
+The dataset used for this project is a curated collection of **14,000+ Indian recipes** designed to support personalized meal generation. It contains diverse entries covering:
+
+- **RecipeName**: Name/title of the dish.
+- **Ingredients**: List of ingredients used (in raw text format).
+- **PrepTime**: Time required for preparation.
+- **CookTime**: Time required for cooking.
+- **Servings**: Number of servings.
+- **Cuisine**: Type of cuisine (e.g., South Indian, North Indian, etc.).
+- **Course**: Category of the dish (e.g., breakfast, lunch, snack).
+- **Diet**: Dietary tag (e.g., vegetarian, non-vegetarian, vegan).
+- **Instructions**: Step-by-step cooking directions.
+
+---
+
+### 🔍 Source
+This dataset was compiled from publicly available recipe repositories and manually validated for structure and completeness. It supports a wide variety of meal types and dietary needs.
+
+---
+
+### 🧹 Preprocessing
+Before fine-tuning, the dataset was:
+- Cleaned to remove null or malformed entries.
+- Tokenized using the LLaMA-2 tokenizer.
+- Augmented to enhance recipe diversity using prompt templating and formatting rules.
+
+---
 
 ## 🖼️ UI Screenshots
 
-> *(Add UI screenshots here)*  
-> `![EatFit UI Screenshot](assets/ui_screenshot.png)`
+> *(Login Page)*  
+> ![EatFit UI Screenshot](src/imgs/login.png)
+
+> *(Main Page)*  
+> ![EatFit UI Screenshot](src/imgs/mainpage.png)
+
 
 ---
 
@@ -66,7 +97,20 @@ Open your browser at `http://localhost:7860`.
 4. Use **👍 Like** or **👎 Dislike** to influence future outputs
 5. View your interaction history in the left sidebar
 
+
 ---
+
+## 🧠 Project Architecture
+
+> *(Architecture)*  
+> ![EatFit Architecture](src/imgs/EatFitArchitecture.drawio.png)
+
+- **Frontend**: Gradio UI with dark mode & interactive state
+- **Backend**: LLaMA-2 model with LoRA adapter
+- **Dynamic Feedback**: Adjusts generation parameters using likes/dislikes
+
+---
+
 
 ## 📊 Evaluation Metrics
 
@@ -91,24 +135,3 @@ Open your browser at `http://localhost:7860`.
 | Avg Latency         | 0.0559 sec/token |
 | Avg Memory Usage    | 204.00 MB        |
 
----
-
-## 🧠 Project Architecture
-
-> *(Add a system architecture diagram here)*  
-> `![Architecture Diagram](assets/architecture_diagram.png)`
-
-- **Frontend**: Gradio UI with dark mode & interactive state
-- **Backend**: LLaMA-2 model with LoRA adapter
-- **Dynamic Feedback**: Adjusts generation parameters using likes/dislikes
-
----
-
-## 📁 Project Structure
-
-```bash
-├── app.py                 # Main app interface with model and UI
-├── requirements.txt       # Python dependencies
-├── assets/                # Screenshots, architecture diagrams
-└── README.md              # Project documentation
-```
